@@ -31,12 +31,13 @@
     <header class="hero">
         <div class="banner">
             <h1 class="banner-title">Tile collection</h1>
-            <button class="banner-btn">바로가기</button>    
+             <button id="scroll-to-products" class="banner-btn">바로가기</button>
+    </div>
         </div>
     </header>
     <!-- end of hero -->
     <!-- products -->
-    <section class="products">
+    <section class="products" id="products-section">
         <div class="section-title">
             <h2>our products</h2>
         </div>
@@ -69,5 +70,10 @@
 				<script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
 				<!-- app js -->
     <script src="app.js"></script>
+				<script>
+					document.getElementById('scroll-to-products').addEventListener('click', function() {
+  document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
+});
+				</script>
   </body> 
 </html>

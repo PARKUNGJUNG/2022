@@ -65,7 +65,7 @@ class UI {
 											</button>
 							</div>
 							<h3>${product.title}</h3>
-							<h4>${product.price}</h4>
+							<h4>${product.price.toLocaleString('ko-KR')} &#8361;</h4>
 			</article>
 			<!-- end of single product -->
 			`;
