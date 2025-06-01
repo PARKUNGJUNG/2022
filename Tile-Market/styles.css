@@ -222,43 +222,47 @@ body {
 
 /* --------------- Cart ---------------- */
 .cart-overlay {
-    position: fixed;                /* 화면에 고정 */
+    position: fixed;
     top: 0;
     right: 0;
-    width: 100%;                    /* 전체 너비 */
-    height: 100%;                   /* 전체 높이 */
-    transition: var(--mainTransition); /* 트랜지션 효과 */
-    background: rgb(230, 213, 197, 0.6); /* 반투명 배경 */
-    z-index: 2;                     /* 다른 요소보다 위 */
-    visibility: hidden;             /* 기본적으로 숨김 */
+    width: 100%;               /* 기존 크기 그대로 */
+    height: 100%;
+    transition: var(--mainTransition);
+    background: rgb(230, 213, 197, 0.6);
+    z-index: 2;
+    visibility: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end; /* 오른쪽 정렬로 패널이 오른쪽에 붙음 */
+}
+
+.cart-overlay.transparentBcg {
+    visibility: visible;
 }
 
 .cart {
-    position: fixed;                /* 화면에 고정 */
+    position: fixed;
     top: 0;
     right: 0;
-    width: 100%;                    /* 전체 너비 */
-    height: 100%;                   /* 전체 높이 */
-    overflow: scroll;               /* 스크롤 가능 */
-    z-index: 3;                     /* 오버레이보다 위 */
-    background: rgb(231, 226, 221); /* 배경색 */
-    padding: 1.5rem;                /* 안쪽 여백 */
-    transition: var(--mainTransition); /* 트랜지션 효과 */
-    /* transform: translateX(100%); */ /* 오른쪽으로 숨김(주석 처리됨) */
+    width: 100%;                /* 기존 크기 그대로 (PC에선 30vw, min-width: 450px) */
+    height: 100%;
+    overflow: scroll;
+    z-index: 3;
+    background: rgb(231, 226, 221);
+    padding: 1.5rem;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    transition: var(--mainTransition);
+    transform: translateX(100%);   /* 오른쪽 바깥에서 시작 */
 }
 
-.showCart {
-    transform: translateX(0);       /* 오른쪽에서 0으로 이동(나타남) */
-}
-
-.transparentBcg {
-    visibility: visible;            /* 오버레이 보이게 */
+.cart-overlay.transparentBcg .cart {
+    transform: translateX(0);      /* 오른쪽에서 슬라이드 인 */
 }
 
 @media screen and (min-width: 768px) {
     .cart {
-        width: 30vw;                /* 화면 30% 너비 */
-        min-width: 450px;           /* 최소 너비 450px */
+        width: 30vw;               /* PC에서는 30vw */
+        min-width: 450px;
     }
 }
 
