@@ -1,79 +1,99 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tile Market</title> 
-<!-- font awesome -->
-<script src="https://kit.fontawesome.com/9e289b53f9.js" crossorigin="anonymous"></script>
-<!-- custom css -->
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"> <!-- 한글 등 다양한 문자를 올바르게 표시 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- IE 브라우저 호환 모드 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 반응형 지원 -->
+    <title>Tile Market</title> <!-- 브라우저 탭에 표시될 제목 -->
+    <!-- font awesome 아이콘 라이브러리 로드 -->
+    <script src="https://kit.fontawesome.com/9e289b53f9.js" crossorigin="anonymous"></script>
+    <!-- 사용자 정의 CSS 파일 연결 -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- navbar -->
+    <!-- ==================== Navbar ==================== -->
     <nav class="navbar">
         <div class="navbar-center">
             <span class="nav-icon">
-            <i class="fas fa-bars"></i>
+                <span class="nav-icon menu-btn">
+  														<i class="fas fa-bars"></i>
+														</span> <!-- 햄버거 메뉴 아이콘 (모바일용) -->
             </span>
-            <img src="./images/logo.svg" alt="store logo" />
+            <img src="./images/logo.svg" alt="store logo" /> <!-- 사이트 로고 이미지 -->
             <div class="cart-btn">
                 <span class="nav-icon">
-                    <i class="fas fa-cart-plus"></i>
+                    <i class="fas fa-cart-plus"></i> <!-- 장바구니 아이콘 -->
                 </span>
-                <div class="cart-items">0</div>
+                <div class="cart-items">0</div> <!-- 장바구니에 담긴 상품 개수 표시 -->
             </div>
         </div>
     </nav>
-    <!-- end of navbar -->
-    <!-- hero -->
+    <!-- ==================== End of Navbar ==================== -->
+
+				<!-- 메뉴 오버레이 -->
+				<div class="menu-overlay">
+						<div class="menu">
+								<span class="close-menu">
+										<i class="fas fa-window-close"></i>
+								</span>
+								<ul>
+										<li><a href="#">홈</a></li>
+										<li><a href="#">제품소개</a></li>
+										<li><a href="#">문의하기</a></li>
+										<!-- 원하는 메뉴 추가 -->
+									</div>
+								</ul>
+						</div>
+
+    <!-- ==================== Hero(메인 배너) ==================== -->
     <header class="hero">
         <div class="banner">
-            <h1 class="banner-title">Tile collection</h1>
-             <button id="scroll-to-products" class="banner-btn">바로가기</button>
-    </div>
+            <h1 class="banner-title">Tile collection</h1> <!-- 메인 타이틀 -->
+            <button id="scroll-to-products" class="banner-btn">바로가기</button> <!-- 상품 영역으로 스크롤하는 버튼 -->
         </div>
     </header>
-    <!-- end of hero -->
-    <!-- products -->
+    <!-- ==================== End of Hero ==================== -->
+
+    <!-- ==================== Products(상품 목록) ==================== -->
     <section class="products" id="products-section">
         <div class="section-title">
-            <h2>our products</h2>
+            <h2>our products</h2> <!-- 상품 섹션 제목 -->
         </div>
         <div class="products-center">
+            <!-- JS로 상품 카드들이 동적으로 삽입됨 -->
         </div>
     </section>
-    <!-- end of products -->
-    <!-- cart -->
+    <!-- ==================== End of Products ==================== -->
+
+    <!-- ==================== Cart(장바구니 오버레이) ==================== -->
     <div class="cart-overlay">
         <div class="cart">
             <span class="close-cart">
-                <i class="fas fa-window-close"></i>
+                <i class="fas fa-window-close"></i> <!-- 닫기 아이콘 -->
             </span>
-            <h2>your cart</h2>
+            <h2>your cart</h2> <!-- 장바구니 타이틀 -->
             <div class="cart-content">
-                <!-- cart item -->
-                <!-- <div class="cart-item">
-                    
-                </div> -->
-                <!-- end of cart item -->
+                <!-- JS로 장바구니 아이템이 동적으로 삽입됨 -->
             </div>
             <div class="cart-footer">
-             <h3>합계 : <span class="cart-total"></span> ￦</h3>
-             <button class="clear-cart banner-btn">장바구니 비우기</button>
+                <h3>합계 : <span class="cart-total"></span> ￦</h3> <!-- 장바구니 총합 표시 -->
+                <button class="clear-cart banner-btn">장바구니 비우기</button> <!-- 장바구니 비우기 버튼 -->
             </div>
         </div>
     </div>
-    <!-- end of cart -->
-				<!-- contentful -->
-				<script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
-				<!-- app js -->
+    <!-- ==================== End of Cart ==================== -->
+
+    <!-- ==================== 외부 라이브러리 및 JS 연결 ==================== -->
+    <!-- Contentful(외부 CMS) JS 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <!-- 사용자 정의 JS (상품 로딩, 장바구니 등 모든 동작) -->
     <script src="app.js"></script>
-				<script>
-					document.getElementById('scroll-to-products').addEventListener('click', function() {
-  document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
-});
-				</script>
-  </body> 
+    <!-- Hero의 "바로가기" 버튼 클릭 시 상품 영역으로 부드럽게 스크롤 -->
+    <script>
+        document.getElementById('scroll-to-products').addEventListener('click', function() {
+            document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+    <!-- ==================== End of Script ==================== -->
+</body>
 </html>
