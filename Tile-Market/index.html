@@ -11,39 +11,56 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- ==================== Navbar ==================== -->
-    <nav class="navbar">
-        <div class="navbar-center">
-            <span class="nav-icon">
-                <span class="nav-icon menu-btn">
-  														<i class="fas fa-bars"></i>
-														</span> <!-- 햄버거 메뉴 아이콘 (모바일용) -->
-            </span>
-            <img src="./images/logo.svg" alt="store logo" /> <!-- 사이트 로고 이미지 -->
-            <div class="cart-btn">
-                <span class="nav-icon">
-                    <i class="fas fa-cart-plus"></i> <!-- 장바구니 아이콘 -->
-                </span>
-                <div class="cart-items">0</div> <!-- 장바구니에 담긴 상품 개수 표시 -->
-            </div>
-        </div>
-    </nav>
-    <!-- ==================== End of Navbar ==================== -->
+    <!-- ==================== 네비게이션 바 ==================== -->
+<nav class="navbar">
+  <div class="navbar-center">
+    <div class="nav-left">
+					<!-- 메뉴 아이콘, 검색 등 -->
+      <span class="nav-icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </span>
+      <!-- 필요하다면 추가 메뉴/아이콘 -->
+    </div>
+
+    <div class="nav-center-logo">
+      <img src="./images/logo.svg" alt="store logo" class="navbar-logo" />
+    </div>
+
+<div class="nav-right">
+  <div class="search-btn">
+    <span class="nav-icon">
+      <i class="fas fa-search"></i>
+    </span>
+  </div>
+  <span class="icon-separator"> <!-- 세로 구분선 -->
+		</span>
+  <div class="cart-btn">
+    <span class="nav-icon">
+      <i class="fas fa-cart-plus"></i>
+    </span>
+    <div class="cart-items">0
+				</div>
+      <!-- 필요하다면 추가 메뉴/아이콘 -->
+    </div>
+  </div>
+</nav>
+    <!-- ==================== 네비게이션 바 끝 ==================== -->
 
 				<!-- 메뉴 오버레이 -->
-				<div class="menu-overlay">
-						<div class="menu">
-								<span class="close-menu">
-										<i class="fas fa-window-close"></i>
-								</span>
-								<ul>
-										<li><a href="#">홈</a></li>
-										<li><a href="#">제품소개</a></li>
-										<li><a href="#">문의하기</a></li>
-										<!-- 원하는 메뉴 추가 -->
-									</div>
-								</ul>
-						</div>
+<div class="menu-overlay">
+  <div class="menu">
+    <span class="close-menu">
+      <i class="fas fa-window-close"></i>
+    </span>
+    <ul>
+						<li><a class="menu-link" href="index.html">홈</a></li>
+      <li><a class="menu-link" href="#">제품 소개</a></li>
+      <li><a class="menu-link" href="#">문의하기</a></li>
+      <!-- 기타 메뉴 -->
+    </ul>
+  </div>
+</div>
+
 
     <!-- ==================== Hero(메인 배너) ==================== -->
     <header class="hero">

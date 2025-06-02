@@ -37,18 +37,118 @@ body {
 }
 
 .navbar-center {
-    width: 100%;                    /* 전체 너비 */
-    max-width: 1170px;              /* 최대 너비 1170px */
-    margin: 0 auto;                 /* 가운데 정렬 */
-    display: flex;                  /* Flexbox 사용 */
-    align-items: center;            /* 수직 가운데 정렬 */
-    justify-content: space-between; /* 좌우로 요소 배치 */
-    padding: 0 1.5rem;              /* 좌우 패딩 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 60px;
+}
+
+.nav-left,
+.nav-right {
+  flex: 1;               /* 양쪽 영역이 남는 공간을 채움 */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;             /* 아이콘 사이 간격 */
+}
+
+.nav-right {
+  justify-content: flex-end; /* 오른쪽 정렬 */
+}
+
+.nav-center-logo {
+  flex: 0 0 auto;        /* 크기 고정, 가운데에 위치 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .navbar-center {
+    flex-direction: column;
+    height: auto;
+  }
+  .nav-left, .nav-right {
+    justify-content: center;
+  }
+  .nav-center-logo {
+    margin: 0.5rem 0;
+  }
 }
 
 .nav-icon {
     font-size: 1.5rem;              /* 아이콘 크기 */
 }
+
+.menu-btn { /* 메뉴 아이콘 */
+  cursor: pointer;                  /* 손가락 커서 */
+  padding: 0;                       /* 패딩 없음 */
+  display: inline-block;            /* 인라인 블록 */
+  box-sizing: border-box;           /* 패딩 포함 크기 계산 */
+  width: 2.5rem;                    /* 네모 크기 고정 */
+  height: 2.5rem;                   /* 네모 크기 고정 */
+  text-align: center;               /* 가운데 정렬 */
+  line-height: 2.2rem;              /* 아이콘을 세로 가운데 정렬 */
+  border-radius: 0.5rem;            /* 약간 둥근 네모(원하면 0으로 완전 네모 가능) */
+  transition: background 0.3s, color 0.3s; /* 배경, 글자색 부드럽게 전환 */
+  background: none;                 /* 기본 배경 없음 */
+}
+
+.menu-btn:hover { /* 메뉴 아이콘 커서 올렸을 때 */
+  background: linear-gradient(      /* 두 톤 연한 주황색 그라데이션 */
+    135deg,
+    #ffe5c2 0%,                     /* 연한 주황 */
+    #ffd1a3 100%                    /* 더 진한 연한 주황 */
+  );
+  color: var(--mainBlack);          /* 아이콘 색상 */
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.08); 선택사항 */
+}
+
+.menu-btn i {
+  vertical-align: middle;           /* 아이콘을 세로 중앙에 맞춤 */
+  font-size: 1.5rem;                /* 아이콘 크기 */
+  line-height: normal;              /* 기본 라인 높이 */
+}
+
+.search-btn { /* 검색 아이콘 */
+  cursor: pointer;
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  text-align: center;
+  line-height: 2.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s, color 0.3s;
+  background: none;
+  margin: 0rem; /* 장바구니와의 간격 */
+		
+}
+
+.search-btn:hover { /* 검색 버튼 커서에 올렸을 때 디자인 */
+  background: var(--primaryColor);
+  color: var(--mainBlack);
+}
+
+.search-btn .nav-icon {
+  vertical-align: middle;
+  font-size: 1.5rem;
+  line-height: normal;
+  color: inherit;
+}
+
+.icon-separator { /* 세로 구분선 */
+  display: inline-block;
+  width: 1.5px;
+  height: 2.0rem;               /* 아이콘과 비슷한 높이 */
+  background: #917c62;        /* 네비 배경과 어울리는 연한 브라운 */
+  margin: 1 0.5rem;           /* 좌우 여백: 기존 아이콘 간격과 동일 */
+  vertical-align: middle;
+  opacity: 0.7;
+}
+
 
 .cart-btn { /* 장바구니 아이콘 */
   position: relative;               /* 내부 요소 위치 기준 */
@@ -61,6 +161,7 @@ body {
   border-radius: 0.5rem;            /* 약간 둥근 네모, 완전 네모는 0 */
   transition: background 0.3s, color 0.3s; /* 배경색, 글자색 부드럽게 전환 */
   background: none;                 /* 기본 배경 없음 */
+		margin: 0rem; /* 검색아이콘 과의 간격 */
 }
 
 .cart-btn:hover { /* 장바구니 버튼 커서에 올렸을 때 디자인 */
@@ -402,7 +503,7 @@ body {
   padding: 0;
 }
 .menu ul li {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .menu ul li a {
   text-decoration: none;
@@ -410,35 +511,42 @@ body {
   font-size: 1.2rem;
 }
 
-
-.menu-btn { /* 메뉴 아이콘 */
-  cursor: pointer;                  /* 손가락 커서 */
-  padding: 0;                       /* 패딩 없음 */
-  display: inline-block;            /* 인라인 블록 */
-  box-sizing: border-box;           /* 패딩 포함 크기 계산 */
-  width: 2.5rem;                    /* 네모 크기 고정 */
-  height: 2.5rem;                   /* 네모 크기 고정 */
-  text-align: center;               /* 가운데 정렬 */
-  line-height: 2.2rem;              /* 아이콘을 세로 가운데 정렬 */
-  border-radius: 0.5rem;            /* 약간 둥근 네모(원하면 0으로 완전 네모 가능) */
-  transition: background 0.3s, color 0.3s; /* 배경, 글자색 부드럽게 전환 */
-  background: none;                 /* 기본 배경 없음 */
+.menu-link { /* 메뉴 오버레이 카테고리 애니메이션 */
+  position: relative;
+  display: inline-block;
+  width: 120px;               /* 고정 너비(원하는 값으로 조절) */
+  text-align: left;           /* 왼쪽 정렬 */
+  padding: 0.3em 0 0.3em 1em; /* 위, 오른쪽, 아래, 왼쪽 (왼쪽에 여백 추가) */
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+  z-index: 1;
 }
 
-.menu-btn:hover { /* 메뉴 아이콘 커서 올렸을 때 */
-  background: linear-gradient(      /* 두 톤 연한 주황색 그라데이션 */
-    135deg,
-    #ffe5c2 0%,                     /* 연한 주황 */
-    #ffd1a3 100%                    /* 더 진한 연한 주황 */
-  );
-  color: var(--mainBlack);          /* 아이콘 색상 */
-  /* box-shadow: 0 2px 8px rgba(0,0,0,0.08); 선택사항 */
+.menu-link::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  border: 2px solid var(--primaryColor);
+  border-radius: 0.4em;
+  opacity: 0;
+  transform: scaleX(0.7) scaleY(0.7);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  box-sizing: border-box;
+  z-index: -1;
 }
 
-.menu-btn i {
-  vertical-align: middle;           /* 아이콘을 세로 중앙에 맞춤 */
-  font-size: 1.5rem;                /* 아이콘 크기 */
-  line-height: normal;              /* 기본 라인 높이 */
+.menu-link:hover,
+.menu-link:focus {
+  color: var(--primaryColor);
+}
+
+.menu-link:hover::before,
+.menu-link:focus::before {
+  opacity: 1;
+  transform: scaleX(1) scaleY(1);
 }
 
 /* ------------- 메뉴 끝 ------------- */
