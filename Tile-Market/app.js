@@ -41,6 +41,73 @@ class Products {
 	}
 }
 
+// 검색 아이콘, 오버레이, 입력창, 닫기 버튼 선택
+const searchBtn = document.getElementById('search-btn');
+const searchDropdown = document.getElementById('search-dropdown');
+const searchInput = document.getElementById('search-input');
+const searchClose = document.getElementById('search-close');
+const searchResults = document.getElementById('search-results');
+
+// 검색창 열기
+searchBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  searchDropdown.style.display = 'block';
+  searchInput.value = '';
+  searchResults.innerHTML = '';
+  searchInput.focus();
+});
+
+// 검색창 닫기 (닫기 버튼)
+searchClose.addEventListener('click', () => {
+  searchDropdown.style.display = 'none';
+});
+
+// 검색창 이외 영역 클릭 시 닫기
+document.addEventListener('click', (e) => {
+  if (!searchDropdown.contains(e.target) && e.target !== searchBtn) {
+    searchDropdown.style.display = 'none';
+  }
+});
+
+// 2. products.json 데이터 활용
+let allProducts = [];
+fetch('products.json')
+  .then(res => res.json())
+  .then(data => {
+    // products.json 구조에 따라 수정
+    allProducts = data.items.map(item => ({
+      title: item.fields.title,
+      price: item.fields.price,
+      image: item.fields.image.fields.file.url
+    }));
+  });
+
+// 3. 검색 입력 이벤트
+searchInput.addEventListener('input', function() {
+  const query = this.value.trim().toLowerCase();
+  if (!query) {
+    searchResults.innerHTML = '';
+    return;
+  }
+  // 검색: 제품명에 query가 포함된 것만 필터
+  const results = allProducts.filter(product =>
+    product.title.toLowerCase().includes(query)
+  );
+  // 제품 결과 표시
+  if (results.length === 0) {
+    searchResults.innerHTML = '<div class="search-result-item">검색 결과가 없습니다.</div>';
+  } else {
+    searchResults.innerHTML = results.map(product => `
+      <div class="search-result-item">
+        <img src="${product.image}" alt="${product.title}" style="width:40px;height:40px;object-fit:cover;border-radius:0.3rem;margin-right:0.7rem;vertical-align:middle;">
+        <span>${product.title}&nbsp;&nbsp;</span>
+        <span style="float:right;color:#f09d51;">${product.price.toLocaleString('ko-KR')}원</span>
+      </div>
+    `).join('');
+  }
+});
+
+
 // UI 관련 클래스 (상품 출력, 장바구니 동작 등)
 class UI {
 	// 상품 목록 화면에 출력

@@ -26,24 +26,34 @@
       <img src="./images/logo.svg" alt="store logo" class="navbar-logo" />
     </div>
 
-<div class="nav-right">
-  <div class="search-btn">
+<div class="nav-right" style="position: relative;">
+  <div class="search-btn" id="search-btn">
     <span class="nav-icon">
       <i class="fas fa-search"></i>
     </span>
   </div>
-  <span class="icon-separator"> <!-- 세로 구분선 -->
-		</span>
+  <span class="icon-separator"></span>
   <div class="cart-btn">
     <span class="nav-icon">
       <i class="fas fa-cart-plus"></i>
     </span>
-    <div class="cart-items">0
-				</div>
-      <!-- 필요하다면 추가 메뉴/아이콘 -->
-    </div>
+    <div class="cart-items">0</div>
   </div>
+
+  <!-- 검색 드롭다운 오버레이 -->
+  <div id="search-dropdown" class="search-dropdown" style="display: none;">
+    <input
+      type="text"
+      id="search-input"
+      placeholder="제품명을 입력하세요..."
+      autocomplete="off"
+    />
+    <button id="search-close" aria-label="검색창 닫기">&times;</button>
+    <div id="search-results"></div>
+  </div>
+</div>
 </nav>
+
     <!-- ==================== 네비게이션 바 끝 ==================== -->
 
 				<!-- 메뉴 오버레이 -->
