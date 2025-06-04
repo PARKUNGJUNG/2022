@@ -21,8 +21,8 @@ let buttonsDOM = [];      // "장바구니 담기" 버튼 배열
 class Products {
 	async getProducts() {
 		try {
-			let contentful = await client.getEntries(); // Contentful에서 데이터 받아오기 (현재는 사용 X)
-			console.log(contentful); // Contentful 데이터 콘솔 출력 (디버깅용)
+			//let contentful = await client.getEntries(); // Contentful에서 데이터 받아오기 (현재는 사용 X)
+			//console.log(contentful); // Contentful 데이터 콘솔 출력 (디버깅용)
 
 			let result = await fetch('products.json');  // 로컬 JSON 파일에서 상품 데이터 가져오기
 			let data = await result.json();             // JSON 파싱

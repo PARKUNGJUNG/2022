@@ -66,9 +66,9 @@ body {
   align-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 600px) { /* 화면 너비가 600px 이하일 때 네비게이션 바의 레이아웃을 모바일에 맞춤.*/
   .navbar-center {
-    flex-direction: column;
+    flex-direction: column; /* 내부 배치 방향을 가로(행) -> 세로(열)로 바꿈.*/
     height: auto;
   }
   .nav-left, .nav-right {
